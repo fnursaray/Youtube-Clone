@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import api from "../utils/api";
 import SideBar from "../components/SideBar";
 import VideoCard from "../components/VideoCard";
+import Undefined from "./Undefined";
 
 const Results = () => {
   const [videos, setVideos] = useState([]);
@@ -19,6 +20,10 @@ const Results = () => {
       .get(`/search?query=${searchTerm}`)
       .then((res) => setVideos(res.data.data));
   }, [searchTerm]);
+
+  if (videos.length === 0) {
+    return <Undefined />;
+  }
 
   return (
     <div className="flex gap-3">

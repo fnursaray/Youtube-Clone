@@ -6,7 +6,7 @@ import api from "../utils/api";
 export const VideoContext = createContext();
 // adım 2: sağlayıcı bileşeni oluşturma
 export const VideoProvider = ({ children }) => {
-  const [selectedCategory, setSelectedCategory] = useState(categories[1]);
+  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
   const [isLoading, setIsLoading] = useState(true);
   const [videos, setVideos] = useState();
   const [error, setError] = useState(null);
@@ -20,7 +20,7 @@ export const VideoProvider = ({ children }) => {
 
     const url =
       type === "home"
-        ? "/home"
+        ? "/trending"
         : type === "trending"
         ? "/trending"
         : type === "category"

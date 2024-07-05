@@ -15,10 +15,7 @@ const Feed = () => {
         {isLoading ? (
           <Loader />
         ) : error ? (
-          <>
-            <Error message={error} />
-            <Undefined />
-          </>
+          <Error message={error} />
         ) : (
           videos.map((item) => <VideoCard key={item.videoId} video={item} />)
         )}
