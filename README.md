@@ -25,4 +25,3 @@ https://rapidapi.com/ytjar/api/yt-api
 ## Screen Gif
 
 <img src="screen.gif" />
-# Youtube-Clone
