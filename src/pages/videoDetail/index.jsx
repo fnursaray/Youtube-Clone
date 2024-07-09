@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import api from "../../utils/api";
 import ReactPlayer from "react-player";
 import VideoCard from "../../components/VideoCard";
@@ -10,17 +10,16 @@ import Comments from "./Comments";
 const VideoDetail = () => {
   const [video, setVideo] = useState(null);
   //* arama parametrelerine erişim için kullandık
-  const [comments, setComment] = useState(null);
+  const [comments, setComments] = useState(null);
   const [searhParams] = useSearchParams();
   //* urlden "v" isimli parametreye searchParams içinde get metodu ile erişip değerini alıyoruz
   const id = searhParams.get("v");
-  const navigate = useNavigate();
 
   //* idsi bilinen videonun bilgilerini apiden al
   useEffect(() => {
     api.get(`/video/info?id=${id}&extend=1`).then((res) => setVideo(res.data));
-    api.get(`/comments?id=${id}`).then((res) => setComment(res.data));
-  }, [id, navigate]);
+    api.get(`/comments?id=${id}`).then((res) => setComments(res.data));
+  }, [id]);
 
   return (
     <div className="detail-page h-screen overflow-auto p-[20px] md:p-[40px] lg:px-[50px] xl:px-[100px]">
